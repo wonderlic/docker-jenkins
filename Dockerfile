@@ -30,6 +30,14 @@ RUN curl -L http://mirrors.jenkins-ci.org/war/1.596/jenkins.war -o /usr/share/je
 ENV JENKINS_UC https://updates.jenkins-ci.org
 RUN chown -R jenkins "$JENKINS_HOME" /usr/share/jenkins/ref
 
+COPY jenkins.sh /usr/local/bin/jenkins.sh
+
+# from a derived Dockerfile, can use `RUN plugin.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
+COPY plugins.sh /usr/local/bin/plugins.sh
+
+RUN chown jenkins:jenkins /usr/local/bin/*.sh
+RUN chmod +x /usr/local/bin/*.sh
+
 # for main web interface:
 EXPOSE 8080
 
@@ -38,8 +46,4 @@ EXPOSE 50000
 
 USER jenkins
 
-COPY jenkins.sh /usr/local/bin/jenkins.sh
 ENTRYPOINT ["/usr/local/bin/jenkins.sh"]
-
-# from a derived Dockerfile, can use `RUN plugin.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
-COPY plugins.sh /usr/local/bin/plugins.sh
