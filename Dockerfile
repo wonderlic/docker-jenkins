@@ -1,6 +1,6 @@
 FROM java:openjdk-7u65-jdk
 
-RUN apt-get update && apt-get install -y wget git curl zip bzip2 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y wget git curl zip bzip2 libstdc++6-4.7-dev && rm -rf /var/lib/apt/lists/*
 
 ENV JENKINS_HOME /var/jenkins_home
 
