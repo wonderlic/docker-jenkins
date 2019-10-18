@@ -1,4 +1,5 @@
 FROM jenkins/jenkins:lts
+LABEL maintainer="Wonderlic DevOps <DevOps@wonderlic.com>"
 
 USER root
 
