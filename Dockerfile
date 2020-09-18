@@ -8,4 +8,8 @@ RUN \
 	apt-get install -y --no-install-recommends zstd g++ build-essential libsecret-1-0 && \
 	rm -rf /var/lib/apt/lists/*
 
+RUN \
+	groupadd -g 281 docker && \
+	usermod -a -G docker jenkins
+
 USER jenkins
