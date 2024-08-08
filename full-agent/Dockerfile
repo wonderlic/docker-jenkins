@@ -13,7 +13,7 @@ RUN \
 	chmod +x /usr/bin/bazel
 
 RUN \
-	groupadd -g 281 docker && \
+	groupmod -g 281 docker && \
 	usermod -a -G docker jenkins
 
 USER jenkins

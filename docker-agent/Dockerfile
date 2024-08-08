@@ -9,7 +9,7 @@ RUN \
 	rm -rf /var/lib/apt/lists/*
 
 RUN \
-	groupadd -g 281 docker && \
+	groupmod -g 281 docker && \
 	usermod -a -G docker jenkins
 
 USER jenkins
