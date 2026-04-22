@@ -5,7 +5,7 @@ USER root
 
 RUN \
 	apt-get update && \
-	RUNLEVEL=1 apt-get install -y --no-install-recommends docker.io docker-cli && \
+	RUNLEVEL=1 apt-get install -y --no-install-recommends docker.io docker-cli docker-buildx && \
 	rm -rf /var/lib/apt/lists/*
 
 RUN \
