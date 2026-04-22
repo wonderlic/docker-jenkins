@@ -5,7 +5,7 @@ USER root
 
 RUN \
 	apt-get update && \
-	RUNLEVEL=1 apt-get install -y --no-install-recommends docker.io zstd g++ build-essential libsecret-1-0 python3-minimal psmisc uuid-runtime && \
+	RUNLEVEL=1 apt-get install -y --no-install-recommends docker.io docker-cli zstd g++ build-essential libsecret-1-0 python3-minimal psmisc uuid-runtime && \
 	rm -rf /var/lib/apt/lists/*
 
 RUN \
@@ -13,7 +13,7 @@ RUN \
 	chmod +x /usr/bin/bazel
 
 RUN \
-  printf '#!/bin/sh\nexit 0' | tee /usr/sbin/policy-rc.d && chmod +x /usr/sbin/policy-rc.d
+	printf '#!/bin/sh\nexit 0' | tee /usr/sbin/policy-rc.d && chmod +x /usr/sbin/policy-rc.d
 
 RUN \
 	groupmod -g 281 docker && \
